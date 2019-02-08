@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Simple tool to turn git commit histories into a mermaid gantt chart."""
+
+##############################################################################
+# Module information.
+__author__     = "Dave Pearson"
+__copyright__  = "Copyright 2019, Dave Pearson"
+__licence__    = "GPL"
+__credits__    = [ "Dave Pearson" ]
+__maintainer__ = "Dave Pearson"
+__email__      = "davep@davep.org"
+__version__    = "0.0.1"
+
+##############################################################################
+# Imports.
+import os
+import argparse
+import subprocess
+import dateutil.parser
+from pathlib import Path
+
+##############################################################################
+# Tidy up the repository list.
+def tidy_repos( repos ):
+    """Tidy the repository list, and also check they're all good.
+
+    :param list repos: A list of repository paths to work from.
+    :returns: A tidy list of repositories.
+    :rtype: list
+    :raises: Exception TODO
+
+    Note that this function takes each of the repository paths and turns
+    them into a Path object, ensuring that they exist and look like a git
+    repository along the way.
+    """
+    # For each repository path we've been given..
+    for repo in repos:
+
+        # Wrap it up as a path object.
+        repo = Path( repo )
+
+        # Does it exist?
+        if not repo.exists():
+            raise Exception( "TODO: Does not exist!" )
+
+        # Does it look like an actual git repository?
+        if not ( repo / Path( ".git" ) ).exists():
+            raise Exception( "TODO: Not a git repo!" )
+
+        # Good repo!
+        yield repo.resolve()
+
+##############################################################################
+# Get the history of the given repository.
+def get_history( repo ):
+    """Get the history of the given repository.
+
+    :param Path repo: A path to a repository.
+    :returns: A list of commit times for the repository.
+    :rtype: list
+    """
+
+    # Go to the repo.
+    os.chdir( str( repo ) )
+
+    # Get the repo history from git.
+    log, error = subprocess.Popen( [
+        "git", "log", "--date=iso8601-strict", '--pretty=format:%ad'
+    ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
+
+    # Return the times.
+    return [ dateutil.parser.parse( date ) for date in log.splitlines() ]
+
+##############################################################################
+# Get the command line params.
+def get_args():
+    """Parse the command line parameters.
+
+    :returns: The parsed command line arguments.
+    :rtype: Namespace
+    """
+
+    # Create the argument parser object.
+    parser = argparse.ArgumentParser(
+        description = "git history to mermaid gantt chart tool",
+        epilog      = "v{}".format( __version__ )
+    )
+
+    # Add --version
+    parser.add_argument(
+        "-v", "--version",
+        help    = "Show version information.",
+        action  = "version",
+        version = "%(prog)s v{}".format( __version__ )
+    )
+
+    # The remainder is the files to check.
+    parser.add_argument( "repos", nargs = argparse.REMAINDER )
+
+    # Parse the command line.
+    return parser.parse_args()
+
+##############################################################################
+# Main code.
+def main():
+    """Main entry point."""
+
+    # Get the arguments.
+    args = get_args()
+
+    # Tidy up all the repo pointers, and ensure they're all good.
+    args.repos = list( tidy_repos( args.repos ) )
+
+    # Gather the history data for each repo.
+    histories = {
+        repo.parts[ -1 ]: get_history( repo ) for repo in args.repos
+    }
+
+    print( histories )
+
+##############################################################################
+# Main entry point.
+if __name__ == "__main__":
+    main()
+
+### git2gantt ends here
