@@ -18,6 +18,7 @@ import argparse
 import subprocess
 from pathlib  import Path
 from datetime import datetime
+from datetime import timedelta
 
 ##############################################################################
 # Tidy up a repository.
@@ -124,6 +125,30 @@ def get_args():
     return parser.parse_args()
 
 ##############################################################################
+# Figure out the next working day of a given day.
+def _next_working_day( day ):
+    """Return the date of the next working day.
+
+    :param datetime day: The day to get the next working day from.
+    :returns: The date of the next working day.
+    :rtype: datetime
+
+    Note that this function makes a lot of assumptions about what a working
+    day is and how to get to it. This works for me. If anyone else needs to
+    make use of this and their idea of a working day differs it would make
+    sense to make this function far more flexible.
+    """
+    return day + timedelta( days={
+        0: 1,                   # Monday
+        1: 1,                   # Tuesday
+        2: 1,                   # Wednesday
+        3: 1,                   # Thursday
+        4: 3,                   # Friday
+        5: 2,                   # Saturday
+        6: 1,                   # Sunday
+    }[ day.weekday() ] )
+
+##############################################################################
 # Convert a repo's history into a list of start days and sessions lengths.
 def contiguous_days( history ):
     """Convert a repository's history into a list of sessions and length.
@@ -132,8 +157,25 @@ def contiguous_days( history ):
     :returns: A list of start days and session length.
     :rtype: list
     """
-    # TODO: Actually work this out. This is just a placeholder for now.
-    return [ ( day, 5 ) for day in history ]
+
+    # Start with the first day in the history.
+    days = { history[ 0 ] : 1 }
+
+    # Get the initial session start date.
+    session_start_day = history[ 0 ]
+
+    # Working through the history, looking at "yesterday" and "today"...
+    for yesterday, today in zip( history, history[ 1: ] ):
+        # If it's a contiguous working day...
+        if _next_working_day( yesterday ) == today:
+            # ...count it as being part of the same development session.
+            days[ session_start_day ] = days.get( session_start_day, 1 ) + 1
+        else:
+            # It's not contiguous. Consider it a new session.
+            session_start_day = today
+
+    # Return the result.
+    return days
 
 ##############################################################################
 # Emit the mermaid code for the repository.
@@ -149,7 +191,7 @@ def emit_repo( name, history ):
     print( "  section {}".format( name ) )
 
     # Print out the coding sessions.
-    for start_day, days in contiguous_days( history ):
+    for start_day, days in contiguous_days( history ).items():
         print( "  {}: {}, {}, {}d".format(
             "Development work",
             "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
