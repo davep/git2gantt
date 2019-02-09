@@ -16,7 +16,8 @@ __version__    = "0.0.1"
 import os
 import argparse
 import subprocess
-from pathlib import Path
+from pathlib  import Path
+from datetime import datetime
 
 ##############################################################################
 # Tidy up a repository.
@@ -59,6 +60,17 @@ def tidy_repos( repos ):
     return [ tidy_repo( repo ) for repo in repos ]
 
 ##############################################################################
+# Turn a string date into a date/time value.
+def _str_to_date( string_date ):
+    """Convert a string date into a date value.
+
+    :param str string_date: A string date in YYYY-MM-DD format.
+    :returns: A date value.
+    :rtype: datetime
+    """
+    return datetime.strptime( string_date, "%Y-%m-%d" )
+
+##############################################################################
 # Get the history of the given repository.
 def get_history( repo ):
     """Get the history of the given repository.
@@ -77,7 +89,9 @@ def get_history( repo ):
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
     # Return a sorted list of unique dates that there's been commits to the repo.
-    return sorted( list( set( [ date[ 0:10 ] for date in log.splitlines() ] ) ) )
+    return sorted(
+        list( set( [ _str_to_date( date[ 0:10 ] ) for date in log.splitlines() ] ) )
+    )
 
 ##############################################################################
 # Get the command line params.
