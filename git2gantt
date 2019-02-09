@@ -26,6 +26,9 @@ from datetime import timedelta
 class NoSuchRepo( FileNotFoundError ):
     """No such repository error."""
 
+class NotAGitRepo( Exception ):
+    """Directory exists but isn't a git repository."""
+
 ##############################################################################
 # Tidy up a repository.
 def tidy_repo( repo ):
@@ -46,7 +49,9 @@ def tidy_repo( repo ):
 
     # Does it look like an actual git repository?
     if not ( repo / ".git" ).exists():
-        raise Exception( "TODO: Not a git repo!" )
+        raise NotAGitRepo(
+            "{} does not look like a git repository".format( str( repo ) )
+        )
 
     # Return the fully-qualified path.
     return repo.resolve()
@@ -235,7 +240,7 @@ def main():
         # Tidy up all the repo pointers, and ensure they're all good.
         args.repos = tidy_repos( args.repos )
 
-    except NoSuchRepo as error:
+    except ( NoSuchRepo, NotAGitRepo ) as error:
         print( error )
         sys.exit( 1 )
 
