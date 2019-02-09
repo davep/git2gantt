@@ -14,11 +14,17 @@ __version__    = "0.0.1"
 ##############################################################################
 # Imports.
 import os
+import sys
 import argparse
 import subprocess
 from pathlib  import Path
 from datetime import datetime
 from datetime import timedelta
+
+##############################################################################
+# Exception for signifying that there's no such repo.
+class NoSuchRepo( FileNotFoundError ):
+    """No such repository error."""
 
 ##############################################################################
 # Tidy up a repository.
@@ -36,7 +42,7 @@ def tidy_repo( repo ):
 
     # Does it exist?
     if not repo.exists():
-        raise Exception( "TODO: Does not exist!" )
+        raise NoSuchRepo( "{} does not exist".format( str( repo ) ) )
 
     # Does it look like an actual git repository?
     if not ( repo / ".git" ).exists():
@@ -224,8 +230,14 @@ def main():
     # Get the arguments.
     args = get_args()
 
-    # Tidy up all the repo pointers, and ensure they're all good.
-    args.repos = tidy_repos( args.repos )
+    try:
+
+        # Tidy up all the repo pointers, and ensure they're all good.
+        args.repos = tidy_repos( args.repos )
+
+    except NoSuchRepo as error:
+        print( error )
+        sys.exit( 1 )
 
     # Emit the gantt diagram from the commit histories.
     emit_mermaid( {
