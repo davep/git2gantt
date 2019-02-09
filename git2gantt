@@ -41,7 +41,8 @@ def tidy_repo( repo ):
     if not ( repo / ".git" ).exists():
         raise Exception( "TODO: Not a git repo!" )
 
-    return repo
+    # Return the fully-qualified path.
+    return repo.resolve()
 
 ##############################################################################
 # Tidy up the repository list.
