@@ -105,7 +105,7 @@ def get_history( repo ):
 
     # Return a sorted list of unique dates that there's been commits to the repo.
     return sorted(
-        list( set( [ _str_to_date( date[ 0:10 ] ) for date in log.splitlines() ] ) )
+        list( { _str_to_date( date[ 0:10 ] ) for date in log.splitlines() } )
     )
 
 ##############################################################################
