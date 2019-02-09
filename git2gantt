@@ -16,7 +16,6 @@ __version__    = "0.0.1"
 import os
 import argparse
 import subprocess
-import dateutil.parser
 from pathlib import Path
 
 ##############################################################################
@@ -69,7 +68,7 @@ def get_history( repo ):
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
     # Return the times.
-    return [ dateutil.parser.parse( date ) for date in log.splitlines() ]
+    return [ date[ 0:10 ] for date in log.splitlines() ]
 
 ##############################################################################
 # Get the command line params.
