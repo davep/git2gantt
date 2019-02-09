@@ -145,6 +145,7 @@ def emit_repo( name, history ):
     """
 
     # Start the section for the repo.
+    print()
     print( "  section {}".format( name ) )
 
     # Print out the coding sessions.
@@ -168,7 +169,6 @@ def emit_mermaid( repos ):
     print( "gantt" )
     print( "  title git2gantt output")
     print( "  dateFormat YYYY-MM-DD" )
-    print()
 
     # Emit each of the repos.
     for repo, history in repos.items():
