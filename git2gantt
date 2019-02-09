@@ -123,6 +123,13 @@ def get_args():
         epilog      = "v{}".format( __version__ )
     )
 
+    # Add --description
+    parser.add_argument(
+        "-d", "--description",
+        default = "Development",
+        help    = "Description to give each session."
+    )
+
     # Add --title
     parser.add_argument(
         "-t", "--title",
@@ -199,9 +206,10 @@ def contiguous_days( history ):
 
 ##############################################################################
 # Emit the mermaid code for the repository.
-def emit_repo( name, history ):
+def emit_repo( args, name, history ):
     """Emit the mermaid code for the given repository.
 
+    :param Namespace args: The command line arguments.
     :param str name: The name of the repository.
     :param list history: The history of commit days for the given repository.
     """
@@ -213,7 +221,7 @@ def emit_repo( name, history ):
     # Print out the coding sessions.
     for start_day, days in contiguous_days( history ).items():
         print( "  {}: {}, {}, {}d".format(
-            "Development work",
+            args.description,
             "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
             start_day.strftime( "%Y-%m-%d" ),
             days
@@ -235,7 +243,7 @@ def emit_mermaid( args, repos ):
 
     # Emit each of the repos.
     for repo, history in repos.items():
-        emit_repo( repo, history )
+        emit_repo( args, repo, history )
 
 ##############################################################################
 # Main code.
