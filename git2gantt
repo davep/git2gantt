@@ -55,7 +55,7 @@ def get_history( repo ):
     """Get the history of the given repository.
 
     :param Path repo: A path to a repository.
-    :returns: A list of commit times for the repository.
+    :returns: A list of commit dates for the repository.
     :rtype: list
     """
 
@@ -67,8 +67,8 @@ def get_history( repo ):
         "git", "log", "--date=iso8601-strict", '--pretty=format:%ad'
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
-    # Return the times.
-    return [ date[ 0:10 ] for date in log.splitlines() ]
+    # Return a sorted list of unique dates that there's been commits to the repo.
+    return sorted( list( set( [ date[ 0:10 ] for date in log.splitlines() ] ) ) )
 
 ##############################################################################
 # Get the command line params.
