@@ -123,6 +123,57 @@ def get_args():
     return parser.parse_args()
 
 ##############################################################################
+# Convert a repo's history into a list of start days and sessions lengths.
+def contiguous_days( history ):
+    """Convert a repository's history into a list of sessions and length.
+
+    :param list history: The history of commit days.
+    :returns: A list of start days and session length.
+    :rtype: list
+    """
+    # TODO: Actually work this out. This is just a placeholder for now.
+    return [ ( day, 5 ) for day in history ]
+
+##############################################################################
+# Emit the mermaid code for the repository.
+def emit_repo( name, history ):
+    """Emit the mermaid code for the given repository.
+
+    :param str name: The name of the repository.
+    :param list history: The history of commit days for the given repository.
+    """
+
+    # Start the section for the repo.
+    print( "  section {}".format( name ) )
+
+    # Print out the coding sessions.
+    for start_day, days in contiguous_days( history ):
+        print( "  {}: {}, {}, {}d".format(
+            "Development work",
+            "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
+            start_day.strftime( "%Y-%m-%d" ),
+            days
+        ) )
+
+##############################################################################
+# Emit the mermaid code for the repositories.
+def emit_mermaid( repos ):
+    """Emit the mermaid code for the given repositories.
+
+    :param dict repos: Dictionary of repositories.
+    """
+
+    # Print the header of the diagram.
+    print( "gantt" )
+    print( "  title git2gantt output")
+    print( "  dateFormat YYYY-MM-DD" )
+    print()
+
+    # Emit each of the repos.
+    for repo, history in repos.items():
+        emit_repo( repo, history )
+
+##############################################################################
 # Main code.
 def main():
     """Main entry point."""
@@ -133,12 +184,10 @@ def main():
     # Tidy up all the repo pointers, and ensure they're all good.
     args.repos = tidy_repos( args.repos )
 
-    # Gather the history data for each repo.
-    histories = {
+    # Emit the gantt diagram from the commit histories.
+    emit_mermaid( {
         repo.parts[ -1 ]: get_history( repo ) for repo in args.repos
-    }
-
-    print( histories )
+    } )
 
 ##############################################################################
 # Main entry point.
