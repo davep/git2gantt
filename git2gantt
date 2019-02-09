@@ -99,7 +99,7 @@ def get_history( repo ):
     os.chdir( str( repo ) )
 
     # Get the repo history from git.
-    log, error = subprocess.Popen( [
+    log, _ = subprocess.Popen( [
         "git", "log", "--date=iso8601-strict", '--pretty=format:%ad'
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
