@@ -124,6 +124,13 @@ def get_args():
         epilog      = "v{}".format( __version__ )
     )
 
+    # Add --title
+    parser.add_argument(
+        "-t", "--title",
+        default = "git2gantt output",
+        help    = "The title for the chart."
+    )
+
     # Add --version
     parser.add_argument(
         "-v", "--version",
@@ -215,15 +222,16 @@ def emit_repo( name, history ):
 
 ##############################################################################
 # Emit the mermaid code for the repositories.
-def emit_mermaid( repos ):
+def emit_mermaid( args, repos ):
     """Emit the mermaid code for the given repositories.
 
+    :param Namespace args: The command line arguments.
     :param dict repos: Dictionary of repositories.
     """
 
     # Print the header of the diagram.
     print( "gantt" )
-    print( "  title git2gantt output")
+    print( "  title {}".format( args.title ) )
     print( "  dateFormat YYYY-MM-DD" )
 
     # Emit each of the repos.
@@ -246,7 +254,7 @@ def main():
         sys.exit( 1 )
 
     # Emit the gantt diagram from the commit histories.
-    emit_mermaid( {
+    emit_mermaid( args, {
         repo.parts[ -1 ]: get_history( repo ) for repo in args.repos
     } )
 
