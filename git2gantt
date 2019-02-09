@@ -67,7 +67,6 @@ def tidy_repos( repos ):
     :param list repos: A list of repository paths to work from.
     :returns: A tidy list of repositories.
     :rtype: list
-    :raises: Exception TODO
 
     Note that this function takes each of the repository paths and turns
     them into a Path object, ensuring that they exist and look like a git
