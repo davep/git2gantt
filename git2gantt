@@ -239,10 +239,8 @@ def main():
     args = get_args()
 
     try:
-
         # Tidy up all the repo pointers, and ensure they're all good.
         args.repos = tidy_repos( args.repos )
-
     except ( NoSuchRepo, NotAGitRepo ) as error:
         print( error )
         sys.exit( 1 )
