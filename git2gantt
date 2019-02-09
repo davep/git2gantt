@@ -26,6 +26,8 @@ from datetime import timedelta
 class NoSuchRepo( FileNotFoundError ):
     """No such repository error."""
 
+##############################################################################
+# Exception for signifying that a directory isn't a git repo.
 class NotAGitRepo( Exception ):
     """Directory exists but isn't a git repository."""
 
