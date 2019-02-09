@@ -19,6 +19,30 @@ import subprocess
 from pathlib import Path
 
 ##############################################################################
+# Tidy up a repository.
+def tidy_repo( repo ):
+    """Tidy the details of the given repository.
+
+    :param str repo: A path to a possible repository.
+    :returns: A fully-qualified path to the repository.
+    :rtype: Path
+    :raises: Exception TODO
+    """
+
+    # Wrap it up as a path object.
+    repo = Path( repo )
+
+    # Does it exist?
+    if not repo.exists():
+        raise Exception( "TODO: Does not exist!" )
+
+    # Does it look like an actual git repository?
+    if not ( repo / ".git" ).exists():
+        raise Exception( "TODO: Not a git repo!" )
+
+    return repo
+
+##############################################################################
 # Tidy up the repository list.
 def tidy_repos( repos ):
     """Tidy the repository list, and also check they're all good.
@@ -32,22 +56,7 @@ def tidy_repos( repos ):
     them into a Path object, ensuring that they exist and look like a git
     repository along the way.
     """
-    # For each repository path we've been given..
-    for repo in repos:
-
-        # Wrap it up as a path object.
-        repo = Path( repo )
-
-        # Does it exist?
-        if not repo.exists():
-            raise Exception( "TODO: Does not exist!" )
-
-        # Does it look like an actual git repository?
-        if not ( repo / Path( ".git" ) ).exists():
-            raise Exception( "TODO: Not a git repo!" )
-
-        # Good repo!
-        yield repo.resolve()
+    return [ tidy_repo( repo ) for repo in repos ]
 
 ##############################################################################
 # Get the history of the given repository.
@@ -108,7 +117,7 @@ def main():
     args = get_args()
 
     # Tidy up all the repo pointers, and ensure they're all good.
-    args.repos = list( tidy_repos( args.repos ) )
+    args.repos = tidy_repos( args.repos )
 
     # Gather the history data for each repo.
     histories = {
