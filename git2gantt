@@ -39,7 +39,8 @@ def tidy_repo( repo ):
     :param str repo: A path to a possible repository.
     :returns: A fully-qualified path to the repository.
     :rtype: Path
-    :raises: Exception TODO
+    :raises: NoSuchRepo
+    :raises: NotAGitRepo
     """
 
     # Wrap it up as a path object.
