@@ -82,4 +82,13 @@ flexible in this regard.
 
 This is just an early test to get things up and going.
 
+## TODO
+
+- [ ] Be smarter about the concept of a "working day".
+- [ ] Allow the option to not even worry about "working days".
+- [ ] Add a parameter that gives some wiggle room for a coding session
+      length.
+- [ ] Look at including Mermaid such that the output is optionally an actual
+      chart.
+
 [//]: # (README.md ends here)
