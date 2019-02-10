@@ -184,11 +184,11 @@ def contiguous_days( history ):
     :rtype: list
     """
 
-    # Start with the first day in the history.
-    days = { history[ 0 ] : 1 }
-
     # Get the initial session start date.
     session_start_day = history[ 0 ]
+
+    # Start with the first day in the history.
+    days = { session_start_day : 1 }
 
     # Working through the history, looking at "yesterday" and "today"...
     for yesterday, today in zip( history, history[ 1: ] ):
