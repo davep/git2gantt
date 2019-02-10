@@ -18,8 +18,7 @@ import sys
 import argparse
 import subprocess
 from pathlib  import Path
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 ##############################################################################
 # Exception for signifying that there's no such repo.
