@@ -1,0 +1,360 @@
+<svg id="mermaid-1549800038482" width="100%" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 720 460"><style>
+
+
+#mermaid-1549800038482 .label {
+  font-family: 'trebuchet ms', verdana, arial;
+  color: #333; }
+
+#mermaid-1549800038482 .node rect,
+#mermaid-1549800038482 .node circle,
+#mermaid-1549800038482 .node ellipse,
+#mermaid-1549800038482 .node polygon {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1px; }
+
+#mermaid-1549800038482 .node.clickable {
+  cursor: pointer; }
+
+#mermaid-1549800038482 .arrowheadPath {
+  fill: #333333; }
+
+#mermaid-1549800038482 .edgePath .path {
+  stroke: #333333;
+  stroke-width: 1.5px; }
+
+#mermaid-1549800038482 .edgeLabel {
+  background-color: #e8e8e8; }
+
+#mermaid-1549800038482 .cluster rect {
+  fill: #ffffde !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important; }
+
+#mermaid-1549800038482 .cluster text {
+  fill: #333; }
+
+#mermaid-1549800038482 div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100; }
+
+#mermaid-1549800038482 .actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF; }
+
+#mermaid-1549800038482 text.actor {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549800038482 .actor-line {
+  stroke: grey; }
+
+#mermaid-1549800038482 .messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: '2 2';
+  stroke: #333; }
+
+#mermaid-1549800038482 .messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: '2 2';
+  stroke: #333; }
+
+#mermaid-1549800038482 #arrowhead {
+  fill: #333; }
+
+#mermaid-1549800038482 #crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important; }
+
+#mermaid-1549800038482 .messageText {
+  fill: #333;
+  stroke: none; }
+
+#mermaid-1549800038482 .labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF; }
+
+#mermaid-1549800038482 .labelText {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549800038482 .loopText {
+  fill: black;
+  stroke: none; }
+
+#mermaid-1549800038482 .loopLine {
+  stroke-width: 2;
+  stroke-dasharray: '2 2';
+  stroke: #CCCCFF; }
+
+#mermaid-1549800038482 .note {
+  stroke: #aaaa33;
+  fill: #fff5ad; }
+
+#mermaid-1549800038482 .noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px; }
+
+#mermaid-1549800038482 .activation0 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+#mermaid-1549800038482 .activation1 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+#mermaid-1549800038482 .activation2 {
+  fill: #f4f4f4;
+  stroke: #666; }
+
+
+#mermaid-1549800038482 .section {
+  stroke: none;
+  opacity: 0.2; }
+
+#mermaid-1549800038482 .section0 {
+  fill: rgba(102, 102, 255, 0.49); }
+
+#mermaid-1549800038482 .section2 {
+  fill: #fff400; }
+
+#mermaid-1549800038482 .section1,
+#mermaid-1549800038482 .section3 {
+  fill: white;
+  opacity: 0.2; }
+
+#mermaid-1549800038482 .sectionTitle0 {
+  fill: #333; }
+
+#mermaid-1549800038482 .sectionTitle1 {
+  fill: #333; }
+
+#mermaid-1549800038482 .sectionTitle2 {
+  fill: #333; }
+
+#mermaid-1549800038482 .sectionTitle3 {
+  fill: #333; }
+
+#mermaid-1549800038482 .sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px; }
+
+
+#mermaid-1549800038482 .grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges; }
+
+#mermaid-1549800038482 .grid path {
+  stroke-width: 0; }
+
+
+#mermaid-1549800038482 .today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px; }
+
+
+
+#mermaid-1549800038482 .task {
+  stroke-width: 2; }
+
+#mermaid-1549800038482 .taskText {
+  text-anchor: middle;
+  font-size: 11px; }
+
+#mermaid-1549800038482 .taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px; }
+
+#mermaid-1549800038482 .taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px; }
+
+
+#mermaid-1549800038482 .taskText0,
+#mermaid-1549800038482 .taskText1,
+#mermaid-1549800038482 .taskText2,
+#mermaid-1549800038482 .taskText3 {
+  fill: white; }
+
+#mermaid-1549800038482 .task0,
+#mermaid-1549800038482 .task1,
+#mermaid-1549800038482 .task2,
+#mermaid-1549800038482 .task3 {
+  fill: #8a90dd;
+  stroke: #534fbc; }
+
+#mermaid-1549800038482 .taskTextOutside0,
+#mermaid-1549800038482 .taskTextOutside2 {
+  fill: black; }
+
+#mermaid-1549800038482 .taskTextOutside1,
+#mermaid-1549800038482 .taskTextOutside3 {
+  fill: black; }
+
+
+#mermaid-1549800038482 .active0,
+#mermaid-1549800038482 .active1,
+#mermaid-1549800038482 .active2,
+#mermaid-1549800038482 .active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc; }
+
+#mermaid-1549800038482 .activeText0,
+#mermaid-1549800038482 .activeText1,
+#mermaid-1549800038482 .activeText2,
+#mermaid-1549800038482 .activeText3 {
+  fill: black !important; }
+
+
+#mermaid-1549800038482 .done0,
+#mermaid-1549800038482 .done1,
+#mermaid-1549800038482 .done2,
+#mermaid-1549800038482 .done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2; }
+
+#mermaid-1549800038482 .doneText0,
+#mermaid-1549800038482 .doneText1,
+#mermaid-1549800038482 .doneText2,
+#mermaid-1549800038482 .doneText3 {
+  fill: black !important; }
+
+
+#mermaid-1549800038482 .crit0,
+#mermaid-1549800038482 .crit1,
+#mermaid-1549800038482 .crit2,
+#mermaid-1549800038482 .crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2; }
+
+#mermaid-1549800038482 .activeCrit0,
+#mermaid-1549800038482 .activeCrit1,
+#mermaid-1549800038482 .activeCrit2,
+#mermaid-1549800038482 .activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2; }
+
+#mermaid-1549800038482 .doneCrit0,
+#mermaid-1549800038482 .doneCrit1,
+#mermaid-1549800038482 .doneCrit2,
+#mermaid-1549800038482 .doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges; }
+
+#mermaid-1549800038482 .doneCritText0,
+#mermaid-1549800038482 .doneCritText1,
+#mermaid-1549800038482 .doneCritText2,
+#mermaid-1549800038482 .doneCritText3 {
+  fill: black !important; }
+
+#mermaid-1549800038482 .activeCritText0,
+#mermaid-1549800038482 .activeCritText1,
+#mermaid-1549800038482 .activeCritText2,
+#mermaid-1549800038482 .activeCritText3 {
+  fill: black !important; }
+
+#mermaid-1549800038482 .titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black; }
+
+#mermaid-1549800038482 g.classGroup text {
+  fill: #9370DB;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 10px; }
+
+#mermaid-1549800038482 g.classGroup rect {
+  fill: #ECECFF;
+  stroke: #9370DB; }
+
+#mermaid-1549800038482 g.classGroup line {
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 .classLabel .box {
+  stroke: none;
+  stroke-width: 0;
+  fill: #ECECFF;
+  opacity: 0.5; }
+
+#mermaid-1549800038482 .classLabel .label {
+  fill: #9370DB;
+  font-size: 10px; }
+
+#mermaid-1549800038482 .relation {
+  stroke: #9370DB;
+  stroke-width: 1;
+  fill: none; }
+
+#mermaid-1549800038482 #compositionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #compositionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #aggregationStart {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #aggregationEnd {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #dependencyStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #dependencyEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #extensionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 #extensionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1; }
+
+#mermaid-1549800038482 .commit-id,
+#mermaid-1549800038482 .commit-msg,
+#mermaid-1549800038482 .branch-label {
+  fill: lightgrey;
+  color: lightgrey; }
+</style><style>#mermaid-1549800038482 {
+    color: rgba(0, 0, 0, 0.65);
+    font: ;
+  }</style><g></g><g class="grid" transform="translate(75, 410)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle"><path class="domain" stroke="currentColor" d="M0.5,-375V0.5H570.5V-375"></path><g class="tick" opacity="1" transform="translate(34.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-06-01</text></g><g class="tick" opacity="1" transform="translate(99.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-07-01</text></g><g class="tick" opacity="1" transform="translate(166.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-08-01</text></g><g class="tick" opacity="1" transform="translate(232.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-09-01</text></g><g class="tick" opacity="1" transform="translate(297.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-10-01</text></g><g class="tick" opacity="1" transform="translate(364.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-11-01</text></g><g class="tick" opacity="1" transform="translate(428.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2018-12-01</text></g><g class="tick" opacity="1" transform="translate(495.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2019-01-01</text></g><g class="tick" opacity="1" transform="translate(561.5,0)"><line stroke="currentColor" y2="-375"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2019-02-01</text></g></g><g><rect x="0" y="48" width="682.5" height="24" class="section section0"></rect><rect x="0" y="72" width="682.5" height="24" class="section section0"></rect><rect x="0" y="96" width="682.5" height="24" class="section section0"></rect><rect x="0" y="120" width="682.5" height="24" class="section section0"></rect><rect x="0" y="144" width="682.5" height="24" class="section section0"></rect><rect x="0" y="168" width="682.5" height="24" class="section section0"></rect><rect x="0" y="192" width="682.5" height="24" class="section section0"></rect><rect x="0" y="216" width="682.5" height="24" class="section section0"></rect><rect x="0" y="240" width="682.5" height="24" class="section section0"></rect><rect x="0" y="264" width="682.5" height="24" class="section section0"></rect><rect x="0" y="288" width="682.5" height="24" class="section section0"></rect><rect x="0" y="312" width="682.5" height="24" class="section section0"></rect><rect x="0" y="336" width="682.5" height="24" class="section section0"></rect><rect x="0" y="360" width="682.5" height="24" class="section section0"></rect><rect x="0" y="384" width="682.5" height="24" class="section section0"></rect></g><g><rect rx="3" ry="3" x="75" y="50" width="15" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="103" y="74" width="19" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="140" y="98" width="17" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="167" y="122" width="5" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="172" y="146" width="8" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="185" y="170" width="21" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="221" y="194" width="54" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="312" y="218" width="47" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="389" y="242" width="9" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="410" y="266" width="35" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="466" y="290" width="13" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="501" y="314" width="6" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="583" y="338" width="4" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="621" y="362" width="9" height="20" class="task  task0"></rect><rect rx="3" ry="3" x="636" y="386" width="9" height="20" class="task  task0"></rect><text font-size="11" x="95" y="63.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="127" y="87.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="162" y="111.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="177" y="135.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="185" y="159.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="211" y="183.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="280" y="207.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="364" y="231.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="403" y="255.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="450" y="279.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="484" y="303.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="512" y="327.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="592" y="351.5" text-height="20" class="taskTextOutsideRight taskTextOutside0 ">Development</text><text font-size="11" x="616" y="375.5" text-height="20" class="taskTextOutsideLeft taskTextOutside0 ">Development</text><text font-size="11" x="631" y="399.5" text-height="20" class="taskTextOutsideLeft taskTextOutside0 ">Development</text></g><g><text x="10" y="230" class="sectionTitle sectionTitle0">Some Repo</text></g><g class="today"><line x1="657" x2="657" y1="25" y2="435" class="today"></line></g><text x="360" y="25" class="titleText">Example output</text></svg>
