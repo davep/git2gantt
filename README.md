@@ -76,7 +76,7 @@ passing it through Mermaid.
 
 This tool was initially written as a way of visualising the work done on a
 number of work projects, so for now it concentrates just on work days. What
-a working day is will different from person to person, and culture to
+a working day is will be different from person to person, and culture to
 culture, etc. I aim to carry on working on this tool and make it a lot more
 flexible in this regard.
 
