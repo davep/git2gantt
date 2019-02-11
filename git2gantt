@@ -151,28 +151,30 @@ def get_args():
     return parser.parse_args()
 
 ##############################################################################
-# Figure out the next working day of a given day.
-def _next_working_day( day ):
-    """Return the date of the next working day.
+# Get a list of the next days that are considered to be working days.
+def next_working_days( day ):
+    """Return a list of dates that are considered to be contiguous.
 
     :param datetime day: The day to get the next working day from.
-    :returns: The date of the next working day.
-    :rtype: datetime
+    :returns: A list of dates that are considered to be contiguous.
+    :rtype: list
 
     Note that this function makes a lot of assumptions about what a working
     day is and how to get to it. This works for me. If anyone else needs to
     make use of this and their idea of a working day differs it would make
     sense to make this function far more flexible.
     """
-    return day + timedelta( days={
-        0: 1,                   # Monday
-        1: 1,                   # Tuesday
-        2: 1,                   # Wednesday
-        3: 1,                   # Thursday
-        4: 3,                   # Friday
-        5: 2,                   # Saturday
-        6: 1,                   # Sunday
-    }[ day.weekday() ] )
+    return [
+        day + timedelta( days=days+1 ) for days in range( {
+            0: 1,                   # Monday
+            1: 1,                   # Tuesday
+            2: 1,                   # Wednesday
+            3: 1,                   # Thursday
+            4: 3,                   # Friday
+            5: 2,                   # Saturday
+            6: 1,                   # Sunday
+        }[ day.weekday() ] )
+    ]
 
 ##############################################################################
 # Convert a repo's history into a list of start days and sessions lengths.
@@ -193,7 +195,7 @@ def contiguous_days( history ):
     # Working through the history, looking at "yesterday" and "today"...
     for yesterday, today in zip( history, history[ 1: ] ):
         # If it's a contiguous working day...
-        if _next_working_day( yesterday ) == today:
+        if today in next_working_days( yesterday ):
             # ...count it as being part of the same development session.
             days[ session_start_day ] = days.get( session_start_day, 1 ) + 1
         else:
