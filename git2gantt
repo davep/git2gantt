@@ -50,7 +50,7 @@ def tidy_repo( repo ):
         raise NoSuchRepo( "{} does not exist".format( str( repo ) ) )
 
     # Does it look like an actual git repository?
-    if not ( repo / ".git" ).is_dir():
+    if not Path( repo / ".git" ).is_dir():
         raise NotAGitRepo(
             "{} does not look like a git repository".format( str( repo ) )
         )
