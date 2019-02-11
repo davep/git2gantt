@@ -86,9 +86,10 @@ def _str_to_date( string_date ):
 
 ##############################################################################
 # Get the history of the given repository.
-def get_history( repo ):
+def get_history( args, repo ):
     """Get the history of the given repository.
 
+    :param Namespace args: The command line arguments.
     :param Path repo: A path to a repository.
     :returns: A list of commit dates for the repository.
     :rtype: list
@@ -97,9 +98,12 @@ def get_history( repo ):
     # Go to the repo.
     os.chdir( str( repo ) )
 
+    # Get the author argument.
+    author = [ "--author={}".format( args.author ) if args.author else None ]
+
     # Get the repo history from git.
     log, _ = subprocess.Popen( [
-        "git", "log", "--date=iso8601-strict", "--pretty=format:%ad"
+        "git", "log", "--date=iso8601-strict", "--pretty=format:%ad", *author
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
     # Return a sorted list of unique dates that there's been commits to the repo.
@@ -120,6 +124,12 @@ def get_args():
     parser = argparse.ArgumentParser(
         description = "git history to mermaid gantt chart tool",
         epilog      = "v{}".format( __version__ )
+    )
+
+    # Add --author
+    parser.add_argument(
+        "-a", "--author",
+        help = "Limit to commits by the given author."
     )
 
     # Add --description
@@ -266,7 +276,7 @@ def main():
 
     # Emit the gantt diagram from the commit histories.
     emit_mermaid( args, [
-        ( repo.parts[ -1 ], get_history( repo ) ) for repo in args.repos
+        ( repo.parts[ -1 ], get_history( args, repo ) ) for repo in args.repos
     ] )
 
 ##############################################################################
