@@ -54,7 +54,7 @@ def tidy_repo( repo ):
     """
 
     # Wrap it up as a path object.
-    repo = Path( repo )
+    repo = Path( repo ).resolve()
 
     # Does it exist?
     if not repo.exists():
@@ -66,8 +66,8 @@ def tidy_repo( repo ):
             "{} does not look like a git repository".format( str( repo ) )
         )
 
-    # Return the fully-qualified path.
-    return repo.resolve()
+    # Return clean path.
+    return repo
 
 ##############################################################################
 # Tidy up the repository list.
