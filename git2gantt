@@ -42,6 +42,18 @@ def is_gitish( location ):
     return Path( location / ".git" ).is_dir()
 
 ##############################################################################
+# Find the root directory of a repository.
+def find_repo_root( repo ):
+    """Find the root directory of a given repository.
+
+    :param Path repo: A path to look at.
+    :returns: The path to the root, if one could be found. Or None.
+    """
+    for location in [ repo, *repo.parents ]:
+        if is_gitish( location ):
+            return location
+
+##############################################################################
 # Tidy up a repository.
 def tidy_repo( repo ):
     """Tidy the details of the given repository.
@@ -60,13 +72,16 @@ def tidy_repo( repo ):
     if not repo.exists():
         raise NoSuchRepo( "{} does not exist".format( str( repo ) ) )
 
-    # Does it look like an actual git repository?
-    if not is_gitish( repo ):
+    # Given the path, try and find the repo root in it.
+    repo = find_repo_root( repo )
+
+    # Throw an error if one wasn't found.
+    if not repo:
         raise NotAGitRepo(
             "{} does not look like a git repository".format( str( repo ) )
         )
 
-    # Return clean path.
+    # Return clean repository path.
     return repo
 
 ##############################################################################
