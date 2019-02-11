@@ -243,7 +243,7 @@ def emit_mermaid( args, repos ):
     print( "  dateFormat YYYY-MM-DD" )
 
     # Emit each of the repos.
-    for repo, history in repos.items():
+    for repo, history in repos:
         emit_repo( args, repo, history )
 
 ##############################################################################
@@ -262,9 +262,9 @@ def main():
         sys.exit( 1 )
 
     # Emit the gantt diagram from the commit histories.
-    emit_mermaid( args, {
-        repo.parts[ -1 ]: get_history( repo ) for repo in args.repos
-    } )
+    emit_mermaid( args, [
+        ( repo.parts[ -1 ], get_history( repo ) ) for repo in args.repos
+    ] )
 
 ##############################################################################
 # Main entry point.
