@@ -52,6 +52,7 @@ def find_repo_root( repo ):
     for location in [ repo, *repo.parents ]:
         if is_gitish( location ):
             return location
+    return None
 
 ##############################################################################
 # Tidy up a repository.
