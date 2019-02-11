@@ -99,7 +99,7 @@ def get_history( repo ):
 
     # Get the repo history from git.
     log, _ = subprocess.Popen( [
-        "git", "log", "--date=iso8601-strict", '--pretty=format:%ad'
+        "git", "log", "--date=iso8601-strict", "--pretty=format:%ad"
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
     # Return a sorted list of unique dates that there's been commits to the repo.
