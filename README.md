@@ -29,7 +29,8 @@ $ make lint
 ## Usage
 
 ```
-usage: git2gantt [-h] [-d DESCRIPTION] [-t TITLE] [-v] repos [repos ...]
+usage: git2gantt [-h] [-a AUTHOR] [-d DESCRIPTION] [-t TITLE] [-v]
+                 repos [repos ...]
 
 git history to mermaid gantt chart tool
 
@@ -38,6 +39,8 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  -a AUTHOR, --author AUTHOR
+                        Limit to commits by the given author.
   -d DESCRIPTION, --description DESCRIPTION
                         Description to give each session.
   -t TITLE, --title TITLE
