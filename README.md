@@ -90,5 +90,8 @@ This is just an early test to get things up and going.
       length.
 - [ ] Look at including Mermaid such that the output is optionally an actual
       chart.
+- [ ] Have repository checking/cleaning do a bit of a search for the root of
+      the repository -- that way people don't need to specify the root of
+      the repository, just some location within it.
 
 [//]: # (README.md ends here)
