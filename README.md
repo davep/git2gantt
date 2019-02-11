@@ -29,7 +29,7 @@ $ make lint
 ## Usage
 
 ```
-usage: git2gantt [-h] [-d DESCRIPTION] [-t TITLE] [-v] ...
+usage: git2gantt [-h] [-d DESCRIPTION] [-t TITLE] [-v] repos [repos ...]
 
 git history to mermaid gantt chart tool
 
