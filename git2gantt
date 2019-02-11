@@ -220,7 +220,7 @@ def emit_repo( args, name, history ):
     print( "  section {}".format( name ) )
 
     # Print out the coding sessions.
-    for start_day, days in contiguous_days( history ).items():
+    for start_day, days in sorted( contiguous_days( history ).items() ):
         print( "  {}: {}, {}, {}d".format(
             args.description,
             "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
