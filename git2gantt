@@ -31,6 +31,17 @@ class NotAGitRepo( Exception ):
     """Directory exists but isn't a git repository."""
 
 ##############################################################################
+# Does a given location look like a git repository?
+def is_gitish( location ):
+    """Does the given location look gitish?
+
+    :param Path location: A path to look at.
+    :returns: True if it looks like a git repository, False if not.
+    :rtype: bool
+    """
+    return Path( location / ".git" ).is_dir()
+
+##############################################################################
 # Tidy up a repository.
 def tidy_repo( repo ):
     """Tidy the details of the given repository.
@@ -50,7 +61,7 @@ def tidy_repo( repo ):
         raise NoSuchRepo( "{} does not exist".format( str( repo ) ) )
 
     # Does it look like an actual git repository?
-    if not Path( repo / ".git" ).is_dir():
+    if not is_gitish( repo ):
         raise NotAGitRepo(
             "{} does not look like a git repository".format( str( repo ) )
         )
