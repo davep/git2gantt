@@ -99,7 +99,7 @@ def get_history( args, repo ):
     os.chdir( str( repo ) )
 
     # Get the author argument.
-    author = [ "--author={}".format( args.author ) if args.author else None ]
+    author = [ "--author={}".format( args.author ) ] if args.author else []
 
     # Get the repo history from git.
     log, _ = subprocess.Popen( [
