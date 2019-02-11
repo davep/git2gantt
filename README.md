@@ -29,7 +29,7 @@ $ make lint
 ## Usage
 
 ```
-usage: git2gantt [-h] [-a AUTHOR] [-d DESCRIPTION] [-t TITLE] [-v]
+usage: git2gantt [-h] [-a AUTHOR] [-d DESCRIPTION] [-f FUZZ] [-t TITLE] [-v]
                  repos [repos ...]
 
 git history to mermaid gantt chart tool
@@ -43,6 +43,8 @@ optional arguments:
                         Limit to commits by the given author.
   -d DESCRIPTION, --description DESCRIPTION
                         Description to give each session.
+  -f FUZZ, --fuzz FUZZ  Size of a 'fuzzy' period when deciding contiguous
+                        days.
   -t TITLE, --title TITLE
                         The title for the chart.
   -v, --version         Show version information.
@@ -89,7 +91,7 @@ This is just an early test to get things up and going.
 
 - [ ] Be smarter about the concept of a "working day".
 - [ ] Allow the option to not even worry about "working days".
-- [ ] Add a parameter that gives some wiggle room for a coding session
+- [X] Add a parameter that gives some wiggle room for a coding session
       length.
 - [ ] Look at including Mermaid such that the output is optionally an actual
       chart.

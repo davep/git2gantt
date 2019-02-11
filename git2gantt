@@ -139,6 +139,14 @@ def get_args():
         help    = "Description to give each session."
     )
 
+    # Add --fuzz
+    parser.add_argument(
+        "-f", "--fuzz",
+        default = "0",
+        type    = int,
+        help    = "Size of a 'fuzzy' period when deciding contiguous days."
+    )
+
     # Add --title
     parser.add_argument(
         "-t", "--title",
@@ -162,9 +170,10 @@ def get_args():
 
 ##############################################################################
 # Get a list of the next days that are considered to be working days.
-def next_working_days( day ):
+def next_working_days( args, day ):
     """Return a list of dates that are considered to be contiguous.
 
+    :param Namespace args: The command line arguments.
     :param datetime day: The day to get the next working day from.
     :returns: A list of dates that are considered to be contiguous.
     :rtype: list
@@ -183,14 +192,15 @@ def next_working_days( day ):
             4: 3,                   # Friday
             5: 2,                   # Saturday
             6: 1,                   # Sunday
-        }[ day.weekday() ] )
+        }[ day.weekday() ] + args.fuzz )
     ]
 
 ##############################################################################
 # Convert a repo's history into a list of start days and sessions lengths.
-def contiguous_days( history ):
+def contiguous_days( args, history ):
     """Convert a repository's history into a list of sessions and length.
 
+    :param Namespace args: The command line arguments.
     :param list history: The history of commit days.
     :returns: A list of start days and session length.
     :rtype: list
@@ -200,17 +210,17 @@ def contiguous_days( history ):
     session_start_day = history[ 0 ]
 
     # Start with the first day in the history.
-    days = { session_start_day : 1 }
+    days = { session_start_day : session_start_day }
 
     # Working through the history, looking at "yesterday" and "today"...
     for yesterday, today in zip( history, history[ 1: ] ):
-        # If it's a contiguous working day...
-        if today in next_working_days( yesterday ):
-            # ...count it as being part of the same development session.
-            days[ session_start_day ] = days.get( session_start_day, 1 ) + 1
-        else:
-            # It's not contiguous. Consider it a new session.
+        # If it's not a contiguous working day...
+        if not ( today in next_working_days( args, yesterday ) ):
+            # ...it's the start of a new coding session.
             session_start_day = today
+
+        # Record today as the last day of the session (for now).
+        days[ session_start_day ] = today
 
     # Return the result.
     return days
@@ -233,12 +243,12 @@ def emit_repo( args, name, history ):
         print( "  section {}".format( name ) )
 
         # Print out the coding sessions.
-        for start_day, days in sorted( contiguous_days( history ).items() ):
-            print( "  {}: {}, {}, {}d".format(
+        for start_day, end_day in sorted( contiguous_days( args, history ).items() ):
+            print( "  {}: {}, {}, {}".format(
                 args.description,
                 "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
                 start_day.strftime( "%Y-%m-%d" ),
-                days
+                ( end_day + timedelta( days=1 ) ).strftime( "%Y-%m-%d" )
             ) )
 
 ##############################################################################
