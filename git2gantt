@@ -258,7 +258,7 @@ def main():
         # Tidy up all the repo pointers, and ensure they're all good.
         args.repos = tidy_repos( args.repos )
     except ( NoSuchRepo, NotAGitRepo ) as error:
-        print( error )
+        print( error, file=sys.stderr )
         sys.exit( 1 )
 
     # Emit the gantt diagram from the commit histories.
