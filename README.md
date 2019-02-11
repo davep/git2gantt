@@ -29,7 +29,8 @@ $ make lint
 ## Usage
 
 ```
-usage: git2gantt [-h] [-a AUTHOR] [-d DESCRIPTION] [-f FUZZ] [-t TITLE] [-v]
+usage: git2gantt [-h] [-a AUTHOR] [-d DESCRIPTION] [-e] [-f FUZZ] [-t TITLE]
+                 [-v]
                  repos [repos ...]
 
 git history to mermaid gantt chart tool
@@ -43,6 +44,7 @@ optional arguments:
                         Limit to commits by the given author.
   -d DESCRIPTION, --description DESCRIPTION
                         Description to give each session.
+  -e, --every-branch    Uses commits for every available branch.
   -f FUZZ, --fuzz FUZZ  Size of a 'fuzzy' period when deciding contiguous
                         days.
   -t TITLE, --title TITLE

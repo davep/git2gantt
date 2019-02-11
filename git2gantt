@@ -101,9 +101,12 @@ def get_history( args, repo ):
     # Get the author argument.
     author = [ "--author={}".format( args.author ) ] if args.author else []
 
+    # Get the branch argument.
+    branches = [ "--all" ] if args.every_branch else []
+
     # Get the repo history from git.
     log, _ = subprocess.Popen( [
-        "git", "log", "--date=iso8601-strict", "--pretty=format:%ad", *author
+        "git", "log", "--date=iso8601-strict", "--pretty=format:%ad", *author, *branches
     ], stdout=subprocess.PIPE, universal_newlines=True ).communicate()
 
     # Return a sorted list of unique dates that there's been commits to the repo.
@@ -137,6 +140,14 @@ def get_args():
         "-d", "--description",
         default = "Development",
         help    = "Description to give each session."
+    )
+
+    # Add --every-branch
+    parser.add_argument(
+        "-e", "--every-branch",
+        action  = "store_true",
+        default = False,
+        help    = "Uses commits for every available branch."
     )
 
     # Add --fuzz
