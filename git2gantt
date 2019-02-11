@@ -70,7 +70,10 @@ def tidy_repo( repo ):
     repo = Path( repo ).resolve()
 
     # Does it exist?
-    if not repo.exists():
+    if not Path( repo ).exists():
+        # If the above use of Path, again, looks odd... It's to keep pylint
+        # quiet. For some reason it thinks repo is an instance of PurePath
+        # here, rather than Path.
         raise NoSuchRepo( "{} does not exist".format( str( repo ) ) )
 
     # Given the path, try and find the repo root in it.
