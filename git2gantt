@@ -39,7 +39,7 @@ def is_gitish( location ):
     :returns: True if it looks like a git repository, False if not.
     :rtype: bool
     """
-    return Path( location / ".git" ).is_dir()
+    return ( location / ".git" ).is_dir()
 
 ##############################################################################
 # Find the root directory of a repository.
