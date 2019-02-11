@@ -226,7 +226,7 @@ def contiguous_days( args, history ):
     # Working through the history, looking at "yesterday" and "today"...
     for yesterday, today in zip( history, history[ 1: ] ):
         # If it's not a contiguous working day...
-        if not ( today in next_working_days( args, yesterday ) ):
+        if not today in next_working_days( args, yesterday ):
             # ...it's the start of a new coding session.
             session_start_day = today
 
