@@ -215,18 +215,21 @@ def emit_repo( args, name, history ):
     :param list history: The history of commit days for the given repository.
     """
 
-    # Start the section for the repo.
-    print()
-    print( "  section {}".format( name ) )
+    # If there's any history to report...
+    if history:
 
-    # Print out the coding sessions.
-    for start_day, days in sorted( contiguous_days( history ).items() ):
-        print( "  {}: {}, {}, {}d".format(
-            args.description,
-            "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
-            start_day.strftime( "%Y-%m-%d" ),
-            days
-        ) )
+        # Start the section for the repo.
+        print()
+        print( "  section {}".format( name ) )
+
+        # Print out the coding sessions.
+        for start_day, days in sorted( contiguous_days( history ).items() ):
+            print( "  {}: {}, {}, {}d".format(
+                args.description,
+                "dev{}{}".format( name, start_day.strftime( "%Y%m%d" ) ),
+                start_day.strftime( "%Y-%m-%d" ),
+                days
+            ) )
 
 ##############################################################################
 # Emit the mermaid code for the repositories.
