@@ -204,7 +204,7 @@ def get_args():
         version = "%(prog)s v{}".format( __version__ )
     )
 
-    # The remainder is the files to check.
+    # The remainder is the path to the repositories to check.
     parser.add_argument( "repos", nargs="+" )
 
     # Parse the command line.
