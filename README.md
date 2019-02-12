@@ -9,8 +9,8 @@ repositories.
 
 ## Setup
 
-`git2gantt` is written in, and requires, Python 3 -- likely Python 3 at the
-oldest. While it should run itself, I've also used
+`git2gantt` is written in, and requires, Python 3 -- likely Python 3.5 at
+the oldest. While it should run itself, I've also used
 [`pipenv`](https://pipenv.readthedocs.io/en/latest/) to help control extra
 things, like being able to easily [lint](https://www.pylint.org/) the code.
 
