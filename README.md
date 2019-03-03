@@ -70,7 +70,7 @@ For example:
 $ git2gantt /path/to/repo1 /path/to/repo2
 ```
 
-The resulting output with me something like:
+The resulting output will be something like:
 
 ![Sample2](img/sample2.svg)
 
