@@ -1,6 +1,6 @@
 .PHONY: setup
 setup:
-	pipenv install --dev
+	pipenv sync --dev
 
 .PHONY: lint
 lint:
